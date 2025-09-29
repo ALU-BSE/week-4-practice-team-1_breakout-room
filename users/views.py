@@ -1,3 +1,4 @@
+from django.contrib.auth import authenticate, login
 from django.shortcuts import render
 from django.core.cache import cache
 from rest_framework import viewsets, permissions, status
@@ -15,7 +16,11 @@ class UserViewSet(viewsets.ModelViewSet):
     """
     queryset = User.objects.all()
     serializer_class = UserSerializer
-    # permission_classes = [permissions.IsAuthenticated]
+<<<<<<< HEAD
+    permission_classes = [permissions.IsAuthenticated]
+=======
+     permission_classes = [permissions.IsAuthenticated]
+>>>>>>> 3f0abf9ea97bbe7013368e59e8d3f763c44a50db
 
 
 class PassengerViewSet(viewsets.ModelViewSet):
@@ -25,7 +30,7 @@ class PassengerViewSet(viewsets.ModelViewSet):
     """
     queryset = Passenger.objects.all()
     serializer_class = PassengerSerializer
-    # permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticated]  
     
     def get_queryset(self):
         """
@@ -65,7 +70,7 @@ class RiderViewSet(viewsets.ModelViewSet):
     """
     queryset = Rider.objects.all()
     serializer_class = RiderSerializer
-    # permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticated]  
     
     def get_queryset(self):
         """
@@ -141,11 +146,8 @@ class RiderViewSet(viewsets.ModelViewSet):
             rider.current_longitude = longitude
             
         rider.save()
-        
-        # Clear available riders cache when location is updated
+
         cache.delete('available_riders')
         
         serializer = self.get_serializer(rider)
         return Response(serializer.data)
-
-

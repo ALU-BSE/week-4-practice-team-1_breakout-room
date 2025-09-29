@@ -10,7 +10,6 @@ from django.utils import timezone
 from django.core.exceptions import ValidationError
 
 
-
 class CustomUserManager(BaseUserManager):
     """
     Custom user model manager where email is the unique identifier
@@ -41,7 +40,6 @@ class CustomUserManager(BaseUserManager):
         if not extra_fields.get('is_superuser'):
             raise ValueError('Superuser must have is_superuser=True.')
         return self.create_user(email, password, **extra_fields)
-
 
 
 class User(AbstractBaseUser, PermissionsMixin):
@@ -82,7 +80,6 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return self.email
-
 
 
 PREFERRED_PAYMENT_METHODS = (

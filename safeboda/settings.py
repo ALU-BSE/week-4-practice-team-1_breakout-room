@@ -41,9 +41,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'rest_framework.authtoken',  # 🔹 ADDED: Token authentication support
     "users",
-    "rest_framework",
-
 ]
 
 MIDDLEWARE = [
@@ -141,6 +141,32 @@ CACHES = {
     }
 }
 
-# REST_FRAMEWORK = {
-#     'DEFAULT_AUTHENTICATION_CLASSES': []
-# }
+<<<<<<< HEAD
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
+}
+=======
+# Django REST Framework Configuration with Authentication
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',  
+        'rest_framework.authentication.SessionAuthentication', 
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',  
+    ],
+    'DEFAULT_RENDERER_CLASSES': [
+        'rest_framework.renderers.JSONRenderer',  
+        'rest_framework.renderers.BrowsableAPIRenderer',  
+    ],
+}
+
+# Token Authentication Settings
+# Tokens will expire after 24 hours (optional)
+TOKEN_EXPIRED_AFTER_HOURS = 24  
+>>>>>>> 3f0abf9ea97bbe7013368e59e8d3f763c44a50db
