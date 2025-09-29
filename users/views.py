@@ -16,7 +16,11 @@ class UserViewSet(viewsets.ModelViewSet):
     """
     queryset = User.objects.all()
     serializer_class = UserSerializer
+<<<<<<< HEAD
     permission_classes = [permissions.IsAuthenticated]
+=======
+     permission_classes = [permissions.IsAuthenticated]
+>>>>>>> 3f0abf9ea97bbe7013368e59e8d3f763c44a50db
 
 
 class PassengerViewSet(viewsets.ModelViewSet):
@@ -26,7 +30,7 @@ class PassengerViewSet(viewsets.ModelViewSet):
     """
     queryset = Passenger.objects.all()
     serializer_class = PassengerSerializer
-    # permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticated]  
     
     def get_queryset(self):
         """
@@ -66,7 +70,7 @@ class RiderViewSet(viewsets.ModelViewSet):
     """
     queryset = Rider.objects.all()
     serializer_class = RiderSerializer
-    # permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticated]  
     
     def get_queryset(self):
         """
